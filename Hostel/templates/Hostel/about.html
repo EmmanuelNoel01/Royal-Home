@@ -1,0 +1,69 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content-about">
+    <div class="content-wrapper">
+       
+        <div class="review-wrapper">
+            <div class="review-header">
+                <h2>Meet the Team</h2>
+                <div class="review-card-wrapper">
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/1.jpg' %}"  alt="profile image" class="profile-img" srcset="">
+                        <h1>Ufoy Jeremy</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                        </p>
+                        <div class="card-spacing">
+
+                        </div>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}"  alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/1.jpg' %}"  alt="profile image" class="profile-img" srcset="">
+                        <h1>Okello Elijah</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                        </p>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}"  alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/1.jpg' %}"  alt="profile image" class="profile-img" srcset="">
+                        <h1>Leku Davis</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subscribe">
+            <div class="subscribe-main">
+                <h3>Subscribe to our newsletter</h3>
+                <h4>We've got you covered, don't miss out</h4>
+                <p>Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum
+                    neque.
+                </p>
+            </div>
+            <div class="forms">
+                <form action="">
+                    <label for="fname"><i class="material-icons">person</i>Full names</label>
+                    <input type="text" name="fname" id="" placeholder="Full names" required>
+
+                    <label for="email"><i class="material-icons">email</i>Email</label>
+                    <input type="email" name="email" id="" placeholder="me@example.com" required>
+
+                    <input type="submit" value="Submit" name="" id="">
+                </form>
+            </div>
+        </div>
+    </div>
+ 
+            
+    </div>
+{% endblock content %}

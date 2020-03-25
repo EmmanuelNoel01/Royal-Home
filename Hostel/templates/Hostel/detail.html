@@ -1,0 +1,135 @@
+{% extends 'users/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'users/details.css' %}">
+    <link rel="stylesheet" href="{% static 'users/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title></title>
+</head>
+<body>
+{% block content %}
+    <div class="content-wrapper-details">
+        <div class="content-details">
+            <div class="header-img mySlides" hidden>
+                <div class="header">
+                    <h2>Hostel Details</h2>
+                </div>
+                <div class="slide">
+                    <img src="{%static 'users/1.jpg' %}" alt="" srcset="">
+                </div>
+                <div class="slide">
+                    <img src="{%static 'users/2.jpg' %}" alt="" srcset="">
+                </div>
+                <div class="slide">
+                    <img src="{%static 'users/3.jpg' %}" alt="" srcset="">
+                </div>
+                <div class="slide">
+                    <img src="{%static 'users/4.jpg' %}" alt="" srcset="">
+                </div>
+                <div class="slide">
+                    <img src="{%static 'users/5.jpg' %}" alt="" srcset="">
+                </div>
+                <div class="dots">
+                    <span class="dot" onclick="showPanel(0)"></span>
+                    <span class="dot" onclick="showPanel(1)"></span>
+                    <span class="dot" onclick="showPanel(2)"></span>
+                    <span class="dot" onclick="showPanel(3)"></span>
+                    <span class="dot" onclick="showPanel(4)"></span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="wrapper-details">
+                    <div class="wrapper-header-details">
+                        <h3>JJ Hostel</h3>
+                        <h4>Makerere Kikoni</h4>
+                    </div>
+                    <div class="wrapper-content-details">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamcoLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcoLorem ipsum dolor sit amet, consectetur adipiscing
+                        elit, sed do eiusmod tempor aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    </div>
+                    <div class="wrapper-content-row">
+                      <h3>Hostel details </h3>
+                        <div class="col-sd-1">
+                      
+                            <ul class="hostel-details-1">                            
+                                <li>Wi-Fi</li>
+                                <li>Security</li>
+                                <li>Rooms</li>
+                                <li>Shuttle</li>
+                                <li>Generator</li>
+                                <li>Lorem</li>
+                            </ul>
+                            <ul class="hostel-details-1">
+                                <li>Wi-Fi</li>
+                                <li>Security</li>
+                                <li>Rooms</li>
+                                <li>Shuttle</li>
+                                <li>Generator</li>
+                                <li>Lorem</li>
+                            </ul>
+                            <ul class="hostel-details-1">
+                                <li>Wi-Fi</li>
+                                <li>Security</li>
+                                <li>Rooms</li>
+                                <li>Shuttle</li>
+                                <li>Generator</li>
+                                <li>Lorem</li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+             <div class="comment">
+                <div class="comment-wrapper" hidden>
+                    <h2>Leave a comment</h2>
+                    <h3>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam
+                        risus.
+                        Sed a tellus quis mi rhoncus dignissim.</h3>
+                    <div class="comment-wrap">
+                        <div class="comment-form">
+                            <form action="">
+                                <label for="fname"><i class="material-icons">person</i>Full names</label>
+                                <input type="text" name="fname" id="" placeholder="Full name">
+
+                                <label for="hostel"><i class="material-icons">hotel</i>Hostel</label>
+                                <input type="text" name="hostel" id="" placeholder="Your hostel">
+
+                                <label for="comment"><i class="material-icons">local_post_office</i>Your Comment</label>
+                                <textarea name="message" rows="5" cols="20"
+                                    placeholder="Enter your comment here"></textarea>
+
+                                <div class="rate">
+                                    <h3>Rate the hostel</h3>
+                                    <div class="stars" data-rating="0">
+                                        <span class="star">&nbsp;</span>
+                                        <span class="star">&nbsp;</span>
+                                        <span class="star">&nbsp;</span>
+                                        <span class="star">&nbsp;</span>
+                                        <span class="star">&nbsp;</span>
+                                    </div>
+                                </div>
+                                <div class="submit-comment">
+                                    <input type="submit" value="Submit" name="submit-comment" id="">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+<script src="{% static 'users/slides.js' %}"></script>
+<script src="{% static 'users/rating.js' %}"></script>
+
+</html>

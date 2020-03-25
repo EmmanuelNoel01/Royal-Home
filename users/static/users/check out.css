@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.nav-bar {
+    padding: 10px;
+}
+
+.book-hostel h2 {
+    text-align: center;
+    font-family: comfortaa-reg;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 5% 0 0 0;
+    color: #000;
+}
+
+form {
+    margin: 0;
+    padding: 20px;
+    background-color: #2b2b2b;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.form-wrap {
+    display: flex;
+    padding: 15px;
+    margin: 0;
+}
+
+.forms {
+    width: 100%;
+    padding: 20px;
+}
+
+.col-02 {
+    -ms-flex: 50%;
+    flex: 50%;
+}
+
+.forms .input {
+    padding: 10px;
+    margin: 10px 0;
+    display: block;
+    flex-direction: row;
+}
+
+.forms .input label {
+    font-size: 25px;
+    margin: 5px 0;
+}
+
+.forms .input label i {
+    font-size: 25px;
+    margin: 0 5px;
+}
+
+.forms .input input {
+    width: 100%;
+    padding: 10px 15px;
+    font-family: ubuntu-reg;
+    border: none;
+    background-color: #ececec;
+    border-radius: 5px;
+    color: #2b2b2b;
+}
+
+.forms .input input:-ms-keyboard-active {
+    color: #ececec;
+    background-color: royalblue;
+}
+
+.forms .input input::selection {
+    color: #ececec;
+    background-color: greenyellow;
+}
+
+.forms .input input::spelling-error {
+    background-color: royalblue;
+}
+
+select {
+    padding: 10px;
+    background-color: royalblue;
+    border: none;
+    color: #fafafa;
+    margin: 0 0 10px 0;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: rgba(65, 105, 225, 0.781);
+}
+
+select:after {
+    content: '';
+    font-size: 15px;
+    padding: 0 5px;
+}
+
+select option {
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+select option :first-child {
+    background-color: rgb(41, 40, 40);
+    color: #fafafa;
+}
+
+select option:nth-child(2n+0) {
+    color: #000;
+    background-color: #ececec;
+}
+
+select option::content {
+    border: none;
+}
+
+.rooms {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.rooms label {
+    display: block;
+    width: 100%;
+}
+
+.rooms label input[type=checkbox] {
+    object-fit: cover;
+    object-position: center;
+    size: 20px;
+    border: none;
+}
+
+
+/*--------------- styling the second form --------------*/
+
+.col-02 {
+    padding: 20px;
+}
+
+.col-02 h3 {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    align-items: center;
+    text-align: center;
+}
+
+.col-02 h4 {
+    margin: 0 0 10px 0;
+}
+
+.col-02 input {
+    margin: 0;
+    padding: 10px 15px;
+    width: 100%;
+    font-family: ubuntu-reg;
+    border: none;
+    background-color: #ececec;
+    border-radius: 5px;
+}
+
+.book-hostel .check-out {
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+}
+
+.book-hostel .check-out input {
+    width: 50%;
+    padding: 10px 0;
+    font-weight: 600;
+    color: #fafafa;
+    background-color: royalblue;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.book-hostel .check-out input:hover {
+    background-color: rgba(65, 105, 225, 0.781);
+}

@@ -1,0 +1,85 @@
+{% extends 'users/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'users/check out.css' %}">
+    <link rel="stylesheet" href="{% static 'users/base.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+{% block content %}
+    <div class="content">
+        <div class="content-wrapper">
+            <div class="book-hostel">
+                <h2>Book a hostel</h2>
+                <form action="" method="post">
+                    <div class="row hostel-select">
+                        <div class="form-wrap">
+                            <div class="forms col-01">
+                                <div class="input">
+                                    <label for="fname"><i class="material-icons">person</i>Full name</label>
+                                    <input type="text" id="" name="fname" placeholder="Full name" required>
+                                </div>
+                                <div class="input">
+                                    <label for="tel"><i class="material-icons">phone</i>Phone Number</label>
+                                    <input type="tel" id="" name="tel" placeholder="Phone number" required>
+                                </div>
+                                <div class="input">
+                                    <label for="email"><i class="material-icons">email</i>Email</label>
+                                    <input type="email" id="" name="email" placeholder="me@example.com" required>
+                                </div>
+                                <select name="choose-hostel" id="">
+                                    <option value="0">Choose a Hostel</option>
+                                    <option value="1">JJ Hostel</option>
+                                    <option value="2">Nana Hostel</option>
+                                    <option value="3">Nakiyinji Hostel</option>
+                                    <option value="4">Douglas Villa Hostel</option>
+                                    <option value="5">Olympia Hostel</option>
+                                    <option value="6">Miriam Hostel</option>
+                                    <option value="7">Kare Hostel</option>
+                                </select>
+                                <div class="rooms">
+                                    <label for="single" class="radio">single Room
+                                        <input type="checkbox" name="single" id="" required>
+                                    </label>
+
+                                    <label for="double" class="radio">Double Room
+                                        <input type="checkbox" name="double" id="" required>
+                                    </label>
+
+                                    <label for="triple" class="radio">Triple Room
+                                        <input type="checkbox" name="triple" id="" required>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="forms col-02">
+                                <h3>Payment</h3>
+                                <h4>Payment Options Available</h4>
+                                <select name="choose-payment" id="">
+                                    <option value="0">Choose Payment method</option>
+                                    <option value="1">MTN Mobile money</option>
+                                    <option value="1">Airtel money</option>
+                                    <option value="1">Africel money</option>
+                                </select>
+                                <input type="tel" name="tel" id="" placeholder="Mobile money Number" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-out">
+                        <label for="check out"></label>
+                        <input type="submit" value="Continue to check out">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

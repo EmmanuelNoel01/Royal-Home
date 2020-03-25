@@ -1,0 +1,678 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="eng">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+<head>
+    <link rel="stylesheet" href="{% static 'users/slider.css' %}">
+    <link rel="stylesheet" href="{% static 'users/rating-system.css' %}">
+    <link rel="stylesheet" href="{% static 'users/main-style.css' %}">
+    <link rel="stylesheet" href="{% static 'users/ini.css-master/dist/ini-dark.min.css' %}">
+    <link rel="stylesheet" href="assets/scss/ini-dark.scss">
+    <link rel="shortcut icon" type="image/jpg" href="assets/img/castle-logos_black.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'users/lightbox/dist/css/lightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'users/lightbox/dist/css/lightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'users/animate/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'users/OwlCarousel/dist/assets/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'users/OwlCarousel/dist/assets/owl.carousel.css' %}">
+
+    <title>Homify.com</title>
+</head>
+<script src="https://kit.fontawesome.com/12c18de3e7.js" crossorigin="anonymous"></script>
+<script src="{% static 'users/lightbox/dist/js/lightbox-plus-jquery.min.js' %}"></script>
+<script src="{% static 'users/lightbox/dist/js/lightbox.js' %}"></script>
+<script src="{% static 'users/parallax.js-1.5.0/parallax.js' %}"></script>
+<script src="{% static 'users/parallax.js-1.5.0/parallax.min.js' %}"></script>
+<script src="{% static 'users/OwlCarousel/dist/owl.carousel.min.js' %}"></script>
+<script src="{% static 'users/OwlCarousel/dist/owl.carousel.js' %}"></script>
+
+<body class="owl-theme">
+  {% if user.is_authenticated %}
+    <div class="nav-container slide-bg">
+        <div class="nav-wrapper">
+            <div class="nav"></div>
+            <div class="nav-bar">
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="left-nav-bar">
+                    <div class="search">
+                        <label for=""><i class="material-icons">search</i></label>
+                        <input type="search" name="q" id="" placeholder="Search">
+                    </div>
+                </div>
+                <div class="right-nav-bar">
+                    <div class="nav-links">
+                        <i class="material-icons">home</i>
+                        <a href="{% url 'hostels'%}" class="actived">Home</a>
+                    </div>
+
+                    <div class="nav-links">
+                        <i class="material-icons">people_outline</i>
+                        <a href="#about_us">About</a>
+                    </div>
+                    <div class="nav-links">
+                        <a href="{% url 'logout'%}" class="login-btn">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="header">
+                <h2 class="logo">Homify.com</h2>
+                            <div class="scroll-down">
+           <a href="#scroll_down" class="color-chg"><i class="material-icons animated infinite slow fadeInUp delay-30s">arrow_drop_down</i></a>
+            </div>
+            </div>
+        </div>
+    </div>
+  {% else %}
+  <div class="nav-container slide-bg">
+      <div class="nav-wrapper">
+          <div class="nav"></div>
+          <div class="nav-bar">
+              <div class="hamburger">
+                  <div class="line"></div>
+                  <div class="line"></div>
+                  <div class="line"></div>
+              </div>
+              <div class="left-nav-bar">
+                  <div class="search">
+                        <label for=""><i class="material-icons">search</i></label>
+                        <input type="search" name="q" id="" placeholder="Search">
+                  </div>
+              </div>
+              <div class="right-nav-bar">
+                  <div class="nav-links">
+                      <i class="material-icons">home</i>
+                      <a href="{% url 'hostels'%}" class="actived">Home</a>
+                  </div>
+
+                  <div class="nav-links">
+                      <i class="material-icons">people_outline</i>
+                      <a href="#about_us">About</a>
+                  </div>
+
+                  <div class="nav-links">
+                      <a href="{% url 'login' %}" class="login-btn">Login</a>
+                  </div>
+                   <div class="nav-links">
+                      <a href="{% url 'register' %}" class="logout-btn">Sign Up</a>
+                  </div>
+              </div>
+          </div>
+          <div class="header">
+              <h2 class="logo">Homify.com</h2>
+                  <div class="scroll-down">
+           <a href="#scroll_down" class="color-chg"><i class="material-icons animated infinite slow fadeInUp delay-30s">arrow_drop_down</i></a>
+            </div>
+          </div>
+      </div>
+  </div>
+  {% endif %}
+
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="content-details" hidden>
+                <div class="details-header">
+                    <h3>Little about us</h3>
+                </div>
+                <div class="details-wrapper">
+                    <div class="details-txt">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua. Ut enim
+                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla nostrud exercitation ullamco
+                        laboris nisi ut aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla
+                    </div>
+                </div>
+            </div>
+            <div class="hostels-wrapper" id="scroll_down">
+                <div class="hostels-h1">
+                    <h2> Get a hostel </h2>
+                    <span class="hostels-sub">Check out the various hostels
+                        available</span>
+                </div>
+                <div class="card-wrapper mySlides">
+                  {% for hostel in hostels%}
+                    <a href="{% url 'hostel-detail' hostel.id %}">
+                    <div class="card">
+                        <div class="poster slide-bgs">
+                            <div class="details">
+                                <h2>{{ hostel.hostel_name}}<br><span>{{ hostel.location }}</span></h2>
+                                <div class="rating">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                    <span>4/5</span>
+                                </div>
+                                <div class="tags">
+                                    <span class="double">Booking Fee</span>
+                                    <span class="price">{{hostel.booking_price}}</span>
+                                    <span class="price" hidden>UGX 960,000</span>
+                                </div>
+                                <div class="info">
+                                    <p>{{ hostel.description }}</p>
+                                </div>
+                                <div class="stark">
+                                    <h4>Photos</h4>
+                                    <div class="ul">
+                                        <div class="li"> <a href="{% static 'users/1.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/1.jpg' %}" alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/2.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/2.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/3.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/3.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/4.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/4.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/5.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/5.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    {% endfor %}
+                    <a href="{% url 'about'%}" hidden>
+                    <div class="card ">
+                        <div class="poster slide-bgs">
+                            <div class="details">
+                                <h2>Miriam Hostel<br><span>Makerere, Kikumi Kikumi</span></h2>
+                                <div class="rating">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                    <span>4/5</span>
+                                </div>
+                                <div class="tags">
+                                    <span class="double">Verified</span>
+                                    <span class="price">UGX 960,000</span>
+                                </div>
+                                <div class="info">
+                                    <p>
+                                        Video might take a few seconds to load, especially because the sources are added
+                                        via
+                                        JS which is something you'll load after the DOM's loading JS which is something
+                                        you'll load after the DOM's loading...
+                                    </p>
+                                </div>
+                                <div class="stark">
+                                    <h4>Photos</h4>
+                                    <div class="ul">
+                                      <div class="li"> <a href="{% static 'users/1.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/1.jpg' %}" alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/2.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/2.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/3.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/3.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/4.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/4.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/5.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/5.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="{% url 'about'%}" hidden>
+                    <div class="card">
+                        <div class="poster slide-bgs">
+                            <div class="details">
+                                <h2>Nakiyinji Hostel<br><span>Makerere, Kikoni</span></h2>
+                                <div class="rating">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                    <span>4/5</span>
+                                </div>
+                                <div class="tags">
+                                    <span class="double">Verified</span>
+                                    <span class="price">UGX 960,000</span>
+                                </div>
+                                <div class="info">
+                                    <p>
+                                        Video might take a few seconds to load, especially because the sources are added
+                                        via
+                                        JS which is something you'll load after the DOM's loading JS which is something
+                                        you'll load after the DOM's loading...
+                                    </p>
+                                </div>
+                                <div class="stark">
+                                    <h4>Photos</h4>
+                                    <div class="ul">
+                                      <div class="li"> <a href="{% static 'users/1.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/1.jpg' %}" alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/2.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/2.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/3.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/3.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/4.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/4.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                      <div class="li"><a href="{% static 'users/5.jpg' %}"  data-lightbox="cardz"><img
+                                                  src="{% static 'users/5.jpg' %}"  alt="" srcset=""></a>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                </div>
+
+            <div class="review-wrapper">
+                <div class="review-header">
+                    <h2>Lorem ipsum dolor</h2>
+                    <span>Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis.</span>
+                </div>
+                <div class="review-card-wrapper">
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                        <div class="card-spacing">
+
+                        </div>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                </div>
+                <div class="review-card-wrapper">
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum Jeremy</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                        <div class="card-spacing">
+
+                        </div>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                </div>
+                <div class="review-card-wrapper">
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum Jeremy</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                        <div class="card-spacing">
+
+                        </div>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                </div>
+                <div class="review-card-wrapper">
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum Jeremy</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                        <div class="card-spacing">
+
+                        </div>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                </div>
+                <div class="review-card-wrapper">
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum Jeremy</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                        <div class="card-spacing">
+
+                        </div>
+                    </div>
+                    <div class="card-review">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                    <div class="card-review">
+                        <img src= "{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/2.jpg' %}" alt="profile image" class="profile-img" srcset="">
+                        <h1>Lorem ipsum dolor</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla.
+                        </p>
+                    </div>
+                </div>
+                <div class="dots">
+                    <span class="dot" onclick="showPanel(0)"></span>
+                    <span class="dot" onclick="showPanel(1)"></span>
+                    <span class="dot" onclick="showPanel(2)"></span>
+                    <span class="dot" onclick="showPanel(3)"></span>
+                    <span class="dot" onclick="showPanel(4)"></span>
+                </div>
+            </div>
+             <div class="review-wrapper-about" class="parallax-window" data-parallax="scroll" data-image-src="static/users/1.jpg">
+            <div class="review-header-about" id="about_us">
+                <h2>Meet the Team</h2>
+                <div class="review-card-wrapper-about">
+                    <div class="card-review-about">
+                        <img src="{% static 'users/2.jpg' %}" alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/1.jpg' %}"  alt="profile image" class="profile-img" srcset="">
+                        <h1>Ufoy Jeremy</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                        </p>
+                        <div class="card-spacing">
+
+                        </div>
+                    </div>
+                    <div class="card-review-about">
+                        <img src="{% static 'users/2.jpg' %}"  alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/1.jpg' %}"  alt="profile image" class="profile-img" srcset="">
+                        <h1>Okello Elijah</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                        </p>
+                    </div>
+                    <div class="card-review-about">
+                        <img src="{% static 'users/2.jpg' %}"  alt="card background" srcset="" class="card-img">
+                        <img src="{% static 'users/1.jpg' %}"  alt="profile image" class="profile-img" srcset="">
+                        <h1>Leku Davis</h1>
+                        <p class="university">Makerere University</p>
+                        <p class="about">
+                            Lorem ipsum dolor cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="content-wrapper-img">
+            <div class="content-header">
+                <h2>About Us</h2>
+                <h4>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</h4>
+            </div>
+            <div class="content-main">
+                <div class="main-text">
+                    <h2>Integer rutrum ligula eu</h2>
+                    <h4>Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum
+                        neque. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum neque.</h4>
+                </div>
+            </div>
+        </div>
+   <div class="contact-us">
+        <div class="contact-us-header">
+            <h3>Get in touch with us</h3>
+            <h4>Have you run into a problem! No worriess, reach us easily</h4>
+        </div>
+        <div class="contact-form">
+            <div class="form-wrapper">
+                <form action="">
+                    <h3>Submit your query</h3>
+                    <div class="input">
+                        <label for="fname"><i class="material-icons">person</i></label>
+                        <input type="text" id="" name="fname" placeholder="Full name">
+                    </div>
+                    <div class="input-email">
+                        <label for="email"><i class="material-icons">email</i></label>
+                        <input type="email" id="" name="email" placeholder="me@example.com">
+                    </div>
+                    <textarea name="" id="" cols="20" rows="5" placeholder="Your query"></textarea>
+                    <div class="submit">
+                        <input type="submit" value="Submit" name="" id="">
+                    </div>
+                </form>
+            </div>
+            <div class="form-offices">
+                <h3>Find Us at Our offices</h3>
+                <p>12th street, Makerere Road</p>
+                <h4>Or contact directly us on</h4>
+                <p>+256 786 890105</p>
+                <p>+256 783 545342</p>
+                <p>+256 787 726354</p>
+                <P><a href="">info@castlehostels.com</a></P>
+                <P><a href="">mail@castlehostels.org</a></P>
+                <h4>Business Hours</h4>
+                <h5>Week Days (Monday - Friday)</h5>
+                <p>8:00 AM - 6:00 PM</p>
+                <h5>Weekends (Saturday & Sunday)</h5>
+                <p>11:00 AM - 4:00 PM</p>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer">
+            <div class="hostel-links">
+                <h3>Hostels</h3>
+                <div class="col-md">
+                    <div class="col-md-1">
+                        <p><a href="" class="colors-chg">JJ Hostel</a></p>
+                        <p><a href="" class="color-chg">Douglas Villa Hostel</a></p>
+                        <p><a href="" class="colors-chg">Nakiyinji Hostel</a></p>
+                        <p><a href="" class="colors-chg">Nana Hostel</a></p>
+                        <p><a href="" class="color-chg">Olympia Hostel</a></p>
+                        <p><a href="" class="colors-chg">Miriam Hostel</a></p>
+                    </div>
+                    <div class="col-md-2">
+                        <p><a href="" class="color-chg">JJ Hostel</a></p>
+                        <p><a href="" class="colors-chg">Douglas Villa Hostel</a></p>
+                        <p><a href="" class="color-chg">Nakiyinji Hostel</a></p>
+                        <p><a href="" class="colors-chg">Nana Hostel</a></p>
+                        <p><a href="" class="color-chg">Olympia Hostel</a></p>
+                        <p><a href="" class="colors-chg">Miriam Hostel</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-main">
+                <div class="contact-footer">
+                    <h3>Contact us</h3>
+                    <div class="address">
+                        <div>
+                            <i class="material-icons">location_on</i>
+                            12th street, Makerere Road
+                        </div>
+                        <div>
+                            <i class="material-icons">contact_phone</i>
+                            +41 786 876 34625
+                        </div>
+                        <div>
+                            <i class="material-icons">phone</i>
+                            +256 786 890105
+                        </div>
+                        <div>
+                            <i class="material-icons">email</i>
+                            info@castlehostel.org
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subscribe">
+                    <form action="">
+                        <h3>Subscribe to our newsletter</h3>
+                        <label for="subscribe"><i class="material-icons">email</i>Enter Your Email</label>
+                        <input type="email" name="email-subscribe" id="" placeholder="me@example.com" required>
+                        <input type="submit" value="Subscribe" name="subscribe" id="">
+                        <div class="subscribe-txt">
+                            You will receive weekly emails with various <br> news about all the happenings <br> in the
+                            various hostels.
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-social-icons">
+                    <div class="social-media-links">
+                        <a href=""><img src="{% static 'users/icons/facebook.png' %}" alt="" srcset="" height="35px" width="35px"></a>
+                        <a href=""><img src="{% static 'users/icons/twitter.png' %}" alt="" srcset="" height="35px" width="35px"></a>
+                        <a href=""><img src="{% static 'users/icons/instagram.png' %}" alt="" srcset="" height="35px" width="35px"></a>
+                        <a href=""><img src="{% static 'users/icons/mail-2.png' %}" alt="" srcset="" height="35px" width="35px"></a>
+                        <a href=""><img src="{% static 'users/icons/whatsapp.png' %}" alt="" srcset="" height="35px" width="35px"></a>
+                    </div>
+                </div>
+                <div class="page-links">
+                    <a href="index.html">Home</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="about.html">About</a>
+                </div>
+                <div class="footer-nav-bar">
+                    <div class="copyright">
+                        &#9400; 2020 |
+                    </div>
+                    <div class="designer">
+                        Designed by <span>Castle International</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <a href="" id="back-to-top" class="color-chg"><i class="material-icons animated infinite slow fadeInDown delay-30s">arrow_drop_up</i></a>
+
+</body>
+<script src="{% static 'users/tabs.js' %}"></script>
+<script src="{% static 'users/rating.js' %}"></script>
+<script src="{% static 'users/slider.js' %}"></script>
+<script src="{% static 'users/observer.js' %}"></script>
+<script src="{% static 'users/js.js' %}"></script>
+<script src="{% static 'users/date.js' %}"></script>
+<script src="{% static 'users/scroll to top.js' %}"></script>
+</html>

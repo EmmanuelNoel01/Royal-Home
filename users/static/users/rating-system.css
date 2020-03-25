@@ -1,0 +1,30 @@
+.star {
+    color: green;
+    font-size: 2.0rem;
+    padding: 0 1rem;
+    font-family: maven-reg;
+    font-weight: 600;
+}
+
+.star::before {
+    content: '\2606';
+    cursor: pointer;
+}
+
+.stars .rated::before {
+    content: '\2605';
+}
+
+.stars {
+    counter-reset: rateme 0;
+    font-size: 2.0rem;
+    font-weight: 900;
+}
+
+.stars .rated {
+    counter-increment: rateme 1;
+}
+
+.stars::after {
+    content: counter(rateme) '/5';
+}

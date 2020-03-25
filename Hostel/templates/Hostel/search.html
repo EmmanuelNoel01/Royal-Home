@@ -1,0 +1,54 @@
+{% extends 'users/base.html'%}
+{% block content %}
+
+                    <a href="{% url 'hostel-detail' Hostel.id %}">
+                    <div class="card">
+                        <div class="poster slide-bgs">
+                            <div class="details">
+                                <h2>JJ Hostel<br><span>Makerere, Kikoni</span></h2>
+                                <div class="rating">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                    <span>4/5</span>
+                                </div>
+                                <div class="tags">
+                                    <span class="double">Verified</span>
+                                    <span class="price">UGX 960,000</span>
+                                </div>
+                                <div class="info">
+                                    <p>
+                                        Video might take a few seconds to load, especially because the sources are added
+                                        via
+                                        JS which is something you'll load after the DOM's loading JS which is something
+                                        you'll load after the DOM's loading...
+                                    </p>
+                                </div>
+                                <div class="stark">
+                                    <h4>Photos</h4>
+                                    <div class="ul">
+                                        <div class="li"> <a href="{% static 'users/1.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/1.jpg' %}" alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/2.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/2.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/3.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/3.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/4.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/4.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                        <div class="li"><a href="{% static 'users/5.jpg' %}"  data-lightbox="cardz"><img
+                                                    src="{% static 'users/5.jpg' %}"  alt="" srcset=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+
+{% endblock content%}
