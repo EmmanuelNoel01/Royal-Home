@@ -1,32 +1,26 @@
 from django import forms
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from custom_user.models import User
+from .models import Profile
 
 
-class UserRegistrationForm(UserCreationForm):
-    email = forms.EmailField()
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=50)
-    
-    class Meta:
-        model = User
-        fields = ['email', 'password1', 'password2']
-
-        date_of_birth = forms.DateField(
-        widget=forms.DateInput(format='%m/%d/%Y', attrs={'class':'datepicker'}),
-        input_formats=('%m/%d/%Y', )
-        )
-
-
-class UserUpdateForm():
+class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
     class Meta:
         model = User
-        fields = ['email']
+        fields = ['username', 'email', 'password1', 'password2']
 
 
-class ProfileUpdateForm():
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
     class Meta:
         model = User
+        fields = ['username', 'email']
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
         fields = ['image']

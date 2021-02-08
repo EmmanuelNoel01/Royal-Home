@@ -1,0 +1,51 @@
+{% extends 'hostels/base1.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="container mt-3">
+		<div>
+			<h2 class = "text-center">Pending Reservations for {{accomodation.name}}</h2>
+			<p class = "text-center small"> Click on a reservation to assign room</p>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type of Unit</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{%for payment in payments%}
+					<tr>
+						<td><a href="{% url 'hostels:assign' payment.id%}" class="text-success">{{payment.payer.username}}</a></td>
+						<td>{{payment.unit}}</td>
+						<td><span class="badge badge-dark badge-pill">Paid <i class="fas fa-check-circle"></i></span></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<br><br>
+		<div>
+			<h2 class = "text-center">Assigned Reservations for {{accomodation.name}}</h2>
+			<p class = "text-center small"> Click on a reservation to assign room</p>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type of Unit</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{%for assigned in assigneds%}
+					<tr>
+						<td class="text-success"><a href="#" class="text-success">{{assigned.payer.username}}</a></td>
+						<td>{{assigned.unit}}</td>
+						<td><span class="badge badge-primary badge-pill">Paid <i class="fas fa-check-circle"></i></span></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock content %}

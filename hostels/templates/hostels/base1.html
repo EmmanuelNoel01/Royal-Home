@@ -1,0 +1,125 @@
+{% load static %}
+{% load pwa %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% progressive_web_app_meta %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href = "{%static 'hostels/3.png'%}" sizes="16x16" type="image/png">
+	<link rel="stylesheet" href="{% static 'hostels/bootstrap.min.css'%}">
+	<script src="{% static 'hostels/js.js'%}"></script>
+	<script src="{% static 'hostels/jquery.min.js' %}"></script>
+	<script src="{% static 'hostels/popper.min.js' %}"></script>
+	<script src="{% static 'hostels/bootstrap.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'hostels/css/all.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'hostels/style.css' %}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Aladin&family=Fondamento&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    {% if title %}
+        <title>Royal Home | {{ title }}</title>
+    {% else %}
+        <title>Royal Home</title>
+    {% endif %}
+</head>
+<body>
+	<header>
+			<nav id="navcontainer" class="navbar navbar-expand-md">
+				<!-- Brand Logo -->
+				<a class="navbar-brand" href="{% url 'hostels:hostel_home'%}">
+				<img src="{% static 'hostels/3.png'%}" alt="logo" width="100" height="90" > <span style="font-size:40px; color: maroon;"><strong>|</strong></span> <span><strong style="font-family: 'Aladin', cursive; font-size:30px; color: #F5C84C;">Royal Home</strong></span>
+				</a>
+				<!-- Toggle/collapse button -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+					<i id="bars-icon" class="fas fa-bars"></i>
+				</button>
+				<!-- Nav Bar Links  -->
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<!-- Search Form  -->
+				 <form class="form-inline" action="{% url 'hostels:search'%}" method="POST">
+				  {% csrf_token %}
+				    <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search hostels by name...">
+				    <button class="btn btn-danger" type="submit"><i class="fa fa-search"></i></button>
+				  </form>
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a id="nav-text" class="nav-link" href="{% url 'hostels:hostel_home'%}">ACCOMODATION</a>
+						</li>
+						<li class="nav-item">
+							<a id="nav-text" class="nav-link" href="#">ABOUT</a>
+						</li>
+						{%if user.is_authenticated%}
+						<li id="loginbtn" class="nav-item">
+							<a href="{% url 'logout' %}"><button id="login" type="button" class="btn btn-danger">Logout</button></a>
+						</li>
+						<li class="nav-item">
+							<a href="{% url 'profile'%}" class="text-white"><i class="fas fa-user"></i> {{user.username}}</a>
+						</li>
+						{% else %}
+						<li id="loginbtn" class="nav-item">
+							<a href="{% url 'login' %}"><button id="login" type="button" class="btn btn-danger">Login</button></a>
+						</li>
+						<li class="nav-item">
+							<a href="{% url 'register'%}"><button id="login"type="button" class="btn btn-danger">Sign Up</button></a>
+						</li>
+						{% endif %}
+					</ul>
+				</div>
+			</nav>
+	</header>
+	<div class="content-wrapper">
+		{% block content %}
+		
+		{% endblock content %}
+	</div>
+  <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+			<img src="{% static 'hostels/3.png'%}" alt="logo" width="100" height="90" > <span style="font-size:40px; color: maroon;"><strong>|</strong></span> <span><strong style="font-family: 'Aladin', cursive; font-size:30px; color: #F5C84C;">Royal Home</strong></span>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Universities</h6>
+            <ul class="footer-links">
+              <li><a href="#">Makerere University</a></li>
+              <li><a href="#">Kyambogo University</a></li>
+              <li><a href="#">Ndejje University</a></li>
+
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+         <a href="#">Royal Home</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fab fa-instagram"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+</body>
+</html>

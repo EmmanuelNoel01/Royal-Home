@@ -1,0 +1,43 @@
+{% extends "hostels/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+<br><br>
+<p class="text-center small">Please Fill in the payment details</p>
+<h1 class="text-center">{{accomodation.name}}</h1>
+<p id="quote" class="text-center small text-danger">A service fee of UGX 10,000 will be charged in addition to the Amount Payable</p>
+<div style="width:70%; margin: auto;"class="form group container register-form-container">
+	<form name = "myform" onsubmit="validate()" method="post" action="{% url 'hostels:checkout' accomodation.id %}">
+		{% csrf_token %}
+		{{form|crispy}}
+		<h2 class="text-center">Room Types</h2>
+		<p class="text-center small text-danger">Hit the <i class="fas fa-caret-down"></i> icon to see the Amount Payable </p>
+		{% for unit in units%}
+		<div class="form-check">
+			<label class="form-check-label">
+				<input type="checkbox" class = "form-check-input" name = "unit" value="{{unit.unit_type}}">{{unit.unit_type}}
+			</label> 
+			<span>
+				<button type="button" class="btn" data-toggle="collapse" data-target="#demo"><i class="fas fa-caret-down"></i></button>
+				  	<div id="demo" class="collapse">
+				  		<p class="small"><strong>Price:</strong> {{unit.amount_per_month}}</p>
+				  		<p class="small"><strong>Minimum Number of Months:</strong> {{unit.minimum_number_of_months}}</p>
+				  		<p class="small"><strong>Amount Payable:</strong> {{unit.actual_amount}}</p>
+				  		<p class="small"><strong>Capacity:</strong> {{unit.capacity}}</p>
+				  		<p class="small"><strong>Self Contained:</strong> {%if unit.is_self_contained %} Yes {% else %} No {% endif %}</p>
+  					</div>
+			</span>
+		</div><br>
+		{% endfor %}
+		<button id="pay" type="submit" class="btn btn-danger">Pay</button>
+	</form>
+</div>
+<script type="text/javascript">
+	function validate(){
+		unit = document.forms["myform"]["unit"].value;
+		btn = document.getElementById("pay");
+		new_HTML = "<span class=\"spinner-border spinner-border-sm\"></span> Processing...";
+		btn.innerHTML = new_HTML;
+	}
+</script>
+<br>
+{% endblock content%}

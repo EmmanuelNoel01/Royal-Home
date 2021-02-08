@@ -1,0 +1,35 @@
+{% extends "hostels/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+<br><br>
+<p class="text-center small">Assign room for <span class="text-success">{{payment.payer.username}}</span></p>
+<div class="container">
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Client</th>
+			<th>Amount Paid</th>
+			<th>Phone Number</th>
+			<th>Type of Room</th>
+			<th>Time of Payment</th>
+			<th>Check in Date</th>
+			<th>Check out Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="text-success">{{payment.payer.username}}</td>
+			<td>{{payment.amount}}</td>
+			<td>{{payment.phone_number}}</td>
+			<td>{{payment.unit}}</td>
+			<td>{{payment.time_of_payment}}</td>
+			<td>{{payment.day_of_moving_in}}</td>
+			<td>{{payment.day_of_moving_out}}</td>
+		</tr>
+	</tbody>
+</table>
+<div style="display: flex;justify-content: center;align-items: center;">
+	<a href="{% url 'hostels:assign_room' assignment.id%}"><button id="pay" type="submit" class="btn btn-success">Assign Room</button></a>
+</div>
+</div>
+{% endblock content%} 

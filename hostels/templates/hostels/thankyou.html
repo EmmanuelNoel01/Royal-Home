@@ -1,0 +1,16 @@
+{% extends "hostels/base.html"%}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container">
+		<h2 class="text-center text-secondary">Transaction Successful.</h2>
+		<h5 class="text-warning text-center">Thank you for booking with us <img src="{% static 'hostels/3.png'%}" width="40" height="40"></h5>
+		<p class="text-center small">
+			Please check your email inbox for information regarding your reservation.
+		</p>
+		</p>
+	<div style="display: flex;justify-content: center;align-items: center;">
+		<a href="{% url 'hostels:hostel_home' %}"><button id="pay" type="submit" class="btn btn-danger">Return Home</button></a>
+	</div>
+</div>
+{% endblock content %}

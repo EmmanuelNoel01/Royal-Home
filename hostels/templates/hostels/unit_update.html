@@ -1,0 +1,14 @@
+{% extends "hostels/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+<br><br>
+<h2 class="text-center text-info">Edit Your Property Units</h2>
+<div style="width:70%; margin: auto;"class="form group container register-form-container">
+	<form name = "myform" onsubmit="validate()" method="post" action="{% url 'hostels:unit_update' unit.id %}">
+		{% csrf_token %}
+		{{form|crispy}}
+		<button id="pay" type="submit" class="btn btn-outline-dark">Submit</button>
+	</form>
+	<br><br><br><br>
+</div>
+{% endblock content%} 

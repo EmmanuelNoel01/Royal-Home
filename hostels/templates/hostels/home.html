@@ -1,0 +1,46 @@
+{% extends "hostels/base.html"%}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container">
+<div class="row1">
+	{% for accomodation in page_obj%}
+			<a href="{% url 'hostels:hostel_detail' accomodation.id %}">
+			  <div class="column1">
+			    <div class="card1">
+			      <img src="{{accomodation.image1.url}}" alt="Jane" style="width:100%">
+			      <div class="container1">
+			        <h2 class="text-dark">{{accomodation.name}}</h2>
+			        <p class="title1">{{accomodation.location}}</p>
+			        <p><button class="button1">Book Now</button></p>
+			      </div>
+			    </div>
+			  </div>
+			</a>
+	{% endfor %}
+</div>
+<div class="pagination">
+		{% if page_obj.number ==  1 %}
+			<span class="text-center">
+			<a href="?page=1"><button id="pag-btn" type="button" class="btn btn-dark">1</button></a>
+			<a href="?page={{page_obj.next_page_number}}"><button id="pag-btn" type="button" class="btn btn-outline-dark">Next</button></a>
+			<a href="?page={{page_obj.paginator.num_pages}}"><button id="pag-btn" type="button" class="btn btn-outline-dark">{{page_obj.paginator.num_pages}}</button></a>
+			</span>
+		{% elif page_obj.has_next and page_obj.has_previous %}
+			<span class="text-center">
+			<a href="?page=1"><button id="pag-btn" type="button" class="btn btn-outline-dark">1</button></a>
+			<a href="?page={{ page_obj.previous_page_number}}"><button id="pag-btn" type="button" class="btn btn-outline-dark">Previous</button></a>
+			<a href="?page={{page_obj.number}}"><button id="pag-btn" type="button" class="btn btn-dark">{{page_obj.number}}</button></a>
+			<a href="?page={{page_obj.next_page_number}}"><button id="pag-btn" type="button" class="btn btn-outline-dark">Next</button></a>
+			<a href="?page={{page_obj.paginator.num_pages}}"><button id="pag-btn" type="button" class="btn btn-outline-dark">{{page_obj.paginator.num_pages}}</button></a>
+			</span>
+		{% else %}
+			<span class="text-center">
+			<a href="?page=1"><button id="pag-btn" type="button" class="btn btn-outline-dark">1</button></a>
+			<a href="?page={{page_obj.previous_page_number}}"><button id="pag-btn" type="button" class="btn btn-outline-dark">Previous</button></a>
+			<a href="?page={{page_obj.number}}"><button id="pag-btn" type="button" class="btn btn-dark">{{page_obj.paginator.num_pages}}</button></a>
+			</span>
+		{% endif %}
+</div>
+</div>
+{% endblock content %}

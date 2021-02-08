@@ -1,0 +1,19 @@
+{% extends "hostels/base.html"%}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container">
+	<h1 class="text-center">Reservation Details for <span class="text-success">{{assignment.payment.payer.username}}</span></h1>
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item list-group-item-secondary">Client Name :<span class="text-success">{{assignment.payment.payer.username}}</span></li>
+		<li class="list-group-item list-group-item-secondary">Amount Paid: {{assignment.payment.amount}}</li>
+		<li class="list-group-item list-group-item-secondary">Phone Number: {{assignment.payment.phone_number}}</li>
+		<li class="list-group-item list-group-item-secondary">Unit type: {{assignment.payment.unit}}</li>
+		<li class="list-group-item list-group-item-secondary">Time of Payment: {{assignment.payment.time_of_payment}}</li>
+		<li class="list-group-item list-group-item-secondary">Day of Moving In: {{assignment.payment.day_of_moving_in}}</li>
+		<li class="list-group-item list-group-item-secondary">Day of Moving Out: {{assignment.payment.day_of_moving_out}}</li>
+		<li class="list-group-item list-group-item-secondary">Room Name: {{assignment.room_name}}</li>
+	</ul>
+</div>
+{% endblock content %}

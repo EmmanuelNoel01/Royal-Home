@@ -1,0 +1,27 @@
+{% extends "hostels/base.html"%}
+{% load static %}
+{% block content %}
+<br><br>
+{% if results_present%}
+<div class="row1 container">
+	{% for accomodation in accomodations%}
+			<a href="{% url 'hostels:hostel_detail' accomodation.id %}">
+			  <div class="column1">
+			    <div class="card1">
+			      <img src="{{ accomodation.image1.url }}" alt="Jane" style="width:100%">
+			      <div class="container1">
+			        <h2 class="text-dark">{{accomodation.name}}</h2>
+			        <p class="title1">{{accomodation.location}}</p>
+			        <p><button class="button1"> Make Reservation</button></p>
+			      </div>
+			    </div>
+			  </div>
+			</a>
+	{% endfor %}
+</div>
+{% else %}
+<div class="container">
+	<p class="text-center small">{{error_message}}</p>
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "hostels/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+<br><br>
+<p class="text-center small">Assign Room for </p>
+<div style="width:70%; margin: auto;"class="form group container register-form-container">
+	<form name = "myform" onsubmit="validate()" method="post" action="{% url 'hostels:assign_room' assignment.id%}">
+		{% csrf_token %}
+		{{form|crispy}}
+		<button id="pay" type="submit" class="btn btn-outline-dark">Submit</button>
+	</form>
+	<br><br><br><br>
+</div>
+{% endblock content%} 

@@ -1,0 +1,134 @@
+{% extends 'hostels/base1.html' %}
+{% load static %}
+{% block content %}
+<div style = " background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('{{accomodation.image1.url}}');"class="header">
+  <div class="hero-text">
+    <h1>{{accomodation.name}}</h1>
+    <p class="small text-center text-white">{{ accomodation.location }}</p>
+    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal">Details & Images</button><br><br>
+    <a href="{% url 'hostels:checkout' accomodation.id %}"><button type="button" class="btn btn-danger" data-dismiss="modal">Book Now</button></a>
+  </div>
+</div>
+<!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-center">{{accomodation.name}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{accomodation.image1.url}}" alt="Los Angeles" width="1100" height="500">
+              </div>
+              <div class="carousel-item">
+                <img src="{{accomodation.image2.url}}" alt="Los Angeles" width="1100" height="500">
+              </div>
+              <div class="carousel-item">
+                <img src="{{accomodation.image3.url}}" alt="Los Angeles" width="1100" height="500">
+              </div>
+              <div class="carousel-item">
+                <img src="{{accomodation.image4.url}}" alt="Los Angeles" width="1100" height="500">
+              </div>
+              <div class="carousel-item">
+                <img src="{{accomodation.image5.url}}" alt="Los Angeles" width="1100" height="500">
+              </div>
+            </div>
+            
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div><br><hr>
+          <h2 class="text-warning text-center">Additional Information</h2>
+          <br>
+          <div class="">
+              <table class="table table-hover">
+                <tr>
+                  <th>Location</th>
+                  <td>{{accomodation.location}}</td>
+                </tr>
+                <tr>
+                  <th>For Students?</th>
+                  <td>{% if accomodation.for_students %} Yes {% else %}No {% endif %}</td>
+                </tr>
+                <tr>
+                  <th>University</th>
+                  <td>{{accomodation.university}}</td>
+                </tr>
+              </table>
+              <hr>
+              <h2 class="text-warning text-center">Room Types</h2>
+              <table class="table table-hover">
+                 {% for unit in accomodation.units_set.all%}
+                <tr>
+                  <th>{{unit.unit_type}}</th>
+                  <td>
+                    <table class="table">
+                      <tr>
+                        <th>Additional Services</th>
+                        <td>{{unit.additional_services}}</td>
+                      </tr>
+                      <tr>
+                        <th>Monthly Rent</th>
+                        <td>UGX {{unit.amount_per_month}}</td>
+                      </tr>
+                      <tr>
+                        <th>Minimum Number of Months to be Paid</th>
+                        <td>{{unit.minimum_number_of_months}}</td>
+                      </tr>
+                      <tr>
+                        <th>Amount Payable</th>
+                        <td>UGX {{unit.actual_amount}}</td>
+                      </tr>
+                      <tr>
+                        <th>Capacity</th>
+                        <td>{{unit.capacity}}</td>
+                      </tr>
+                      <tr>
+                        <th>Available Number of Units</th>
+                        <td>{{unit.available_number}}</td>
+                      </tr>
+                      <tr>
+                        <th>Self Contained?</th>
+                        <td>{{unit.is_self_contained}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <span>
+        {% if accomodation.owner == user %}
+            <a class="btn btn-outline-warning" href="{% url 'hostels:acc_update' accomodation.id %}">Update</a>
+        {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

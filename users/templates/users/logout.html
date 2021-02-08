@@ -1,7 +1,12 @@
-{% extends "users/base.html" %}
-{% load crispy_forms_tags %}
+{% extends "hostels/base.html" %}
 {% block content %}
+<br>
 <div class="container">
-  <h2>You have been looged out</h2>
+	<h2>You have been logged out</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log In Again</a>
+        </small>
+    </div>
 </div>
 {% endblock content %}

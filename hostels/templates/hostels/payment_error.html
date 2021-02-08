@@ -1,0 +1,11 @@
+{% extends "hostels/base.html"%}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container">
+	<p class="text-center small text-danger">{{error_message}}</p>
+</div>
+<div style="  width:100px; margin: auto;">
+	<a class = "text-center text-white" href="{% url 'hostels:hostel_home'%}"><button class="text-center btn btn-outline-success">Try Again</button></a>
+</div>
+{% endblock content %}

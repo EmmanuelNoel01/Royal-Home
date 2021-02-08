@@ -1,0 +1,26 @@
+{% extends "hostels/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+<br><br>
+<div class="container">
+	<h2 class="text-center">Edit Your Property</h2>
+</div>
+<div style="width:70%; margin: auto;"class="form group container register-form-container">
+	<form enctype="multipart/form-data" name = "myform" onsubmit="validate()" method="post" action="{% url 'hostels:acc_update' accomodation.id %}">
+		{% csrf_token %}
+		{{form|crispy}}
+		<button id="pay" type="submit" class="btn btn-outline-dark">Submit</button>
+	</form>
+	<br><br>
+<div class="container mt-3">
+	<h2 class="text-center">Edit Units</h2>
+	<br>
+	<ul class="list-group">
+		{% for unit in accomodation.units_set.all %}
+		<a class ="text-primary" href="{% url 'hostels:unit_update' unit.id%}"><li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">{{unit.unit_type}}<span class="badge badge-dark badge-pill">Click to edit</span></li></a>
+		{% endfor %}
+	</ul>
+</div>
+<br>
+</div>
+{% endblock content%}
